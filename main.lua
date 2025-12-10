@@ -3,73 +3,195 @@ Time = require("timeconverter")
 cont = {}
 cont.__index = cont
 
-function cont.new(Input)
+function cont.new()
 	instance = setmetatable({}, cont)
 	
 	
 end
 
 function love.load()
+	local Layer1Red, Layer1Green, Layer1Blue, Layer1Alpha = 0.17647058823529411764705882352941, 0.16862745098039215686274509803922, 0.25490196078431372549019607843137, 1
+	local Layer2Red, Layer2Green, Layer2Blue, Layer2Alpha = 0.13725490196078431372549019607843, 0.12941176470588235294117647058824, 0.25490196078431372549019607843137, 1
+	local Layer1PosX, Layer1PosY, Layer1SizeX = 96, 36, 888
+	local Layer2PosX, Layer2PosY, Layer2SizeX = 106, 46, 868
+	local Layer3PosY = 53
 	GlobalTable = 
 	{
-		["BgColour"] = {0.1, 0.1, 0.1, 1},
-		["BgTopSizeX"] = 1080,
-		["BgTopSizeY"] = 36,
-		["BgLeftSizeX"] = 96,
-		["BgLeftSizeY"] = 640,
-		["BgBottomSizeX"] = 1080,
-		["BgBottomSizeY"] = 36,
-		["BgBottomPosY"] = 604,
-		["BgRightSizeX"] = 96,
-		["BgRightSizeY"] = 640,
-		["BgRightPosX"] = 984,
-		["1SizeX"] = 888,
-		["1SizeY"] = 568,
-		["1Colour"] = {0.5, 0.5, 0.5, 1},
-		["1PosX"] = 96,
-		["1PosY"] = 36,
-		["2SizeX"] = 868,
-		["2SizeY"] = 548,
-		["2Colour"] = {0.7, 0.7, 0.7, 1},
-		["2PosX"] = 106,
-		["2PosY"] = 46,
-		["3SizeX"] = 854,
-		["3SizeY"] = 534,
-		["3Colour"] = {0.3, 0.3, 0.3, 1},
-		["3PosX"] = 113,
-		["3PosY"] = 53,
-		["1ImmitationSizeY"] = 10,
-		["2ImmitationSizeY"] = 7,
+		["Bg"] = 
+		{
+			["Colours"] = 
+			{
+				["Red"] = 0.01960784313725490196078431372549,
+				["Green"] = 0.01568627450980392156862745098039,
+				["Blue"] = 0.08627450980392156862745098039216,
+				["Alpha"] = 1,
+			},
+			["BgLayerTop"] = 
+			{
+				["Type"] = "fill",
+				["SizeX"] = 1080,
+				["SizeY"] = 36,
+				["PosX"] = 0,
+				["PosY"] = 0,
+			},
+			["BgLayerLeft"] = 
+			{
+				["Type"] = "fill",
+				["SizeX"] = 96,
+				["SizeY"] = 640,
+				["PosX"] = 0,
+				["PosY"] = 0,
+			},
+			["BgLayerRight"] = 
+			{
+				["Type"] = "fill",
+				["SizeX"] = 96,
+				["SizeY"] = 640,
+				["PosX"] = 984,
+				["PosY"] = 0,
+			},
+			["BgLayerBottom"] = 
+			{
+				["Type"] = "fill",
+				["SizeX"] = 1080,
+				["SizeY"] = 36,
+				["PosX"] = 0,
+				["PosY"] = 604,
+			},
+		},
+		["Layer1"] = 
+		{
+			["Type"] = "fill",
+			["SizeX"] = Layer1SizeX,
+			["SizeY"] = 568,
+			["PosX"] = Layer1PosX,
+			["PosY"] = Layer1PosY,
+			["Red"] = Layer1Red,
+			["Green"] = Layer1Green,
+			["Blue"] = Layer1Blue,
+			["Alpha"] = Layer1Alpha,
+		},
+		["Layer2"] = 
+		{
+			["Type"] = "fill",
+			["SizeX"] = Layer2SizeX,
+			["SizeY"] = 548,
+			["PosX"] = Layer2PosX,
+			["PosY"] = Layer2PosY,
+			["Red"] = Layer2Red,
+			["Green"] = Layer2Green,
+			["Blue"] = Layer2Blue,
+			["Alpha"] = Layer2Alpha,
+		},
+		["Layer3"] = 
+		{
+			["Type"] = "fill",
+			["SizeX"] = 854,
+			["SizeY"] = 534,
+			["PosX"] = 113,
+			["PosY"] = Layer3PosY,
+			["Red"] = 0.05098039215686274509803921568627,
+			["Green"] = 0.05098039215686274509803921568627,
+			["Blue"] = 0.12941176470588235294117647058824,
+			["Alpha"] = 1,
+		},
+		["Layer1Immitation"] =
+		{
+			["Type"] = "fill",
+			["PosXTop"] = Layer1PosX,
+			["PosYTop"] = Layer1PosY,
+			["SizeXTop"] = Layer1SizeX,
+			["SizeYTop"] = 10,
+			["PosXBottom"] = Layer1PosX,
+			["PosYBottom"] = 640-Layer2PosY, -- 640 here is the height of the window.
+			["SizeXBottom"] = Layer1SizeX,
+			["SizeYBottom"] = 10,
+			["Red"] = Layer1Red,
+			["Green"] = Layer1Green,
+			["Blue"] = Layer1Blue,
+			["Alpha"] = Layer1Alpha,
+		},
+		["Layer2Immitation"] =
+		{
+			["Type"] = "fill",
+			["PosXTop"] = Layer2PosX,
+			["PosYTop"] = Layer2PosY,
+			["SizeXTop"] = Layer2SizeX,
+			["SizeYTop"] = 10,
+			["PosXBottom"] = Layer2PosX,
+			["PosYBottom"] = 640-Layer3PosY, -- 640 here is the height of the window.
+			["SizeXBottom"] = Layer2SizeX,
+			["SizeYBottom"] = 7,
+			["Red"] = Layer2Red,
+			["Green"] = Layer2Green,
+			["Blue"] = Layer2Blue,
+			["Alpha"] = Layer2Alpha,
+		},
+		["Contents"] =
+		{
+			["Type"] = "fill",
+			["PosX"] = 153,
+			["PosY"] = 93,
+			["SizeX"] = 774,
+			["SizeY"] = 100,
+			["Red"] = 0.05490196078431372549019607843137, 
+			["Green"] = 0.04313725490196078431372549019608, 
+			["Blue"] = 0.23529411764705882352941176470588, 
+			["Alpha"] = 1,
+		},
 	}
 end
 
 function Menu()
-	love.graphics.setColor(GlobalTable["1Colour"][1], GlobalTable["1Colour"][2], GlobalTable["1Colour"][3], GlobalTable["1Colour"][4])
-	love.graphics.rectangle("fill", GlobalTable["1PosX"], GlobalTable["1PosY"], GlobalTable["1SizeX"], GlobalTable["1SizeY"])
+	local L1 = GlobalTable["Layer1"]
+	local L2 = GlobalTable["Layer2"]
+	local L3 = GlobalTable["Layer3"]
+	local BgTop = GlobalTable["Bg"]["BgLayerTop"]
+	local BgLeft = GlobalTable["Bg"]["BgLayerLeft"]
+	local BgRight = GlobalTable["Bg"]["BgLayerRight"]
+	local BgBottom = GlobalTable["Bg"]["BgLayerBottom"]
+	local BgColours = GlobalTable["Bg"]["Colours"]
+	local L1I = GlobalTable["Layer1Immitation"]
+	local L2I = GlobalTable["Layer2Immitation"]
+	local Cont = GlobalTable["Contents"]
 	
-	love.graphics.setColor(GlobalTable["2Colour"][1], GlobalTable["2Colour"][2], GlobalTable["2Colour"][3], GlobalTable["2Colour"][4])
-	love.graphics.rectangle("fill", GlobalTable["2PosX"], GlobalTable["2PosY"], GlobalTable["2SizeX"], GlobalTable["2SizeY"])
+	love.graphics.setColor(L1["Red"], L1["Green"], L1["Blue"], L1["Alpha"])
+	love.graphics.rectangle(L1["Type"], L1["PosX"], L1["PosY"], L1["SizeX"], L1["SizeY"])
 	
-	love.graphics.setColor(GlobalTable["3Colour"][1], GlobalTable["3Colour"][2], GlobalTable["3Colour"][3], GlobalTable["3Colour"][4])
-	love.graphics.rectangle("fill", GlobalTable["3PosX"], GlobalTable["3PosY"], GlobalTable["3SizeX"], GlobalTable["3SizeY"])
+	love.graphics.setColor(L2["Red"], L2["Green"], L2["Blue"], L2["Alpha"])
+	love.graphics.rectangle(L2["Type"], L2["PosX"], L2["PosY"], L2["SizeX"], L2["SizeY"])
 	
-	-- This is where the activities and their contents begin
+	love.graphics.setColor(L3["Red"], L3["Green"], L3["Blue"], L3["Alpha"])
+	love.graphics.rectangle(L3["Type"], L3["PosX"], L3["PosY"], L3["SizeX"], L3["SizeY"])
 	
-	-- This is where the activities and their contents end
+	--[[ VVV This is where the activities and their contents begin VVV
 	
-	love.graphics.setColor(GlobalTable["BgColour"][1], GlobalTable["BgColour"][2], GlobalTable["BgColour"][3], GlobalTable["BgColour"][4])
-	love.graphics.rectangle("fill", 0, 0, GlobalTable["BgTopSizeX"], GlobalTable["BgTopSizeY"])
-	love.graphics.rectangle("fill", 0, 0, GlobalTable["BgLeftSizeX"], GlobalTable["BgLeftSizeY"])
-	love.graphics.rectangle("fill", 0, GlobalTable["BgBottomPosY"], GlobalTable["BgBottomSizeX"], GlobalTable["BgBottomSizeY"])
-	love.graphics.rectangle("fill", GlobalTable["BgRightPosX"], 0, GlobalTable["BgRightSizeX"], GlobalTable["BgRightSizeY"])	
+	love.graphics.setColor(Cont["Red"], Cont["Green"], Cont["Blue"], Cont["Alpha"])
+	love.graphics.rectangle(Cont["Type"], Cont["PosX"], Cont["PosY"], Cont["SizeX"], Cont["SizeY"])
 	
-	love.graphics.setColor(GlobalTable["1Colour"][1], GlobalTable["1Colour"][2], GlobalTable["1Colour"][3]+0.5, GlobalTable["1Colour"][4])
-	love.graphics.rectangle("fill", GlobalTable["1PosX"], GlobalTable["1PosY"], GlobalTable["1SizeX"], GlobalTable["1ImmitationSizeY"])
-	love.graphics.rectangle("fill", GlobalTable["1PosX"], 640-GlobalTable["2PosY"], GlobalTable["1SizeX"], GlobalTable["1ImmitationSizeY"])
+	-- ^^^ This is where the activities and their contents end ^^^]]
 	
-	love.graphics.setColor(GlobalTable["2Colour"][1], GlobalTable["2Colour"][2], GlobalTable["2Colour"][3]-0.5, GlobalTable["2Colour"][4])
-	love.graphics.rectangle("fill", GlobalTable["2PosX"], GlobalTable["2PosY"], GlobalTable["2SizeX"], GlobalTable["2ImmitationSizeY"])
-	love.graphics.rectangle("fill", GlobalTable["2PosX"], 640-GlobalTable["3PosY"], GlobalTable["2SizeX"], GlobalTable["2ImmitationSizeY"])
+	-- VVV This is the Main Menu Background code
+	
+	love.graphics.setColor(BgColours["Red"], BgColours["Green"], BgColours["Blue"], BgColours["Alpha"])
+	love.graphics.rectangle(BgTop["Type"], BgTop["PosX"], BgTop["PosY"], BgTop["SizeX"], BgTop["SizeY"])
+	love.graphics.rectangle(BgRight["Type"], BgRight["PosX"], BgRight["PosY"], BgRight["SizeX"], BgRight["SizeY"])
+	love.graphics.rectangle(BgLeft["Type"], BgLeft["PosX"], BgLeft["PosY"], BgLeft["SizeX"], BgLeft["SizeY"])
+	love.graphics.rectangle(BgBottom["Type"], BgBottom["PosX"], BgBottom["PosY"], BgBottom["SizeX"], BgBottom["SizeY"])
+	
+	-- ^^^ This is the Main Menu Background code ^^^
+	
+	-- VVV These are the guidelines VVV
+	
+	love.graphics.setColor(L1I["Red"], L1I["Green"], L1I["Blue"], L1I["Alpha"])
+	love.graphics.rectangle(L1I["Type"], L1I["PosXTop"], L1I["PosYTop"], L1I["SizeXTop"], L1I["SizeYTop"])
+	love.graphics.rectangle(L1I["Type"], L1I["PosXBottom"], L1I["PosYBottom"], L1I["SizeXBottom"], L1I["SizeYBottom"])
+	
+	love.graphics.setColor(L2I["Red"], L2I["Green"], L2I["Blue"], L2I["Alpha"])
+	love.graphics.rectangle(L2I["Type"], L2I["PosXTop"], L2I["PosYTop"], L2I["SizeXTop"], L2I["SizeYTop"])
+	love.graphics.rectangle(L2I["Type"], L2I["PosXBottom"], L2I["PosYBottom"], L2I["SizeXBottom"], L2I["SizeYBottom"])
+	
+	-- ^^^ These are the guidelines ^^^
 end
 
 function love.update(dt)
