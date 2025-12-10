@@ -9,6 +9,10 @@ the docs are located if I ever make any/if any are required to begin with.
 - Project began
 - Added `readme.md`, `main.lua`, `conf.lua`, `Schematics.png`, `Schematics.xcf`, and `LICENSE`
 
+### 2025/12/10
+- Reformatted frontend code
+- Redoing the colour palette
+
 ## Roadmap
 
 This project is intended to be finished by the first of January, 2026.
