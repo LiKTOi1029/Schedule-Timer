@@ -1,6 +1,16 @@
 Time = {}
 Time__index = Time
 
+--[[
+	When I wrote this, only God and I knew what it was about.
+	Now only God knows what this is about.
+	
+	update nvm I figured it out. It just took bashing my skull 
+	with a brick to lose a few IQ points to understand what kind 
+	of stupid I was on to even think of writing something this 
+	dumb.
+]]
+
 function Time.new(Input)
 	local Instance = setmetatable({}, Time)
 	local TempTable = {}
@@ -38,5 +48,7 @@ function Time.new(Input)
 	Instance.Time = Time
 	return Instance
 end
+
+-- local this = Time.new("Nov 24 2025 1:43:55")
 
 return Time
