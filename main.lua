@@ -1,12 +1,22 @@
-Time = require("timeconverter")
+local Time = require("timeconverter")
 
-cont = {}
+local cont = {}
 cont.__index = cont
+local AllInstances = {}
 
-function cont.new()
+function cont.new(InputDate)
 	instance = setmetatable({}, cont)
-	
-	
+	if #AllInstances > 0 then
+		instance.position = {GlobalTable["Contents"]["PosX"], GlobalTable["Contents"]["PosY"]*(#AllInstances + 10)}
+	else 
+		instance.position = {GlobalTable["Contents"]["PosX"], GlobalTable["Contents"]["PosY"]}
+	end
+	instance.size = {GlobalTable["Contents"]["SizeX"], GlobalTable["Contents"]["SizeY"]}
+	instance.contents = InputString
+	instance.date = Time.new(InputDate)
+	instance.colors = {GlobalTable["Contents"]["Red"], GlobalTable["Contents"]["Green"], GlobalTable["Contents"]["Blue"], GlobalTable["Contents"]["Alpha"]}
+	table.insert(AllInstances, instance)
+	return instance
 end
 
 function love.load()
@@ -164,12 +174,18 @@ function Menu()
 	love.graphics.setColor(L3["Red"], L3["Green"], L3["Blue"], L3["Alpha"])
 	love.graphics.rectangle(L3["Type"], L3["PosX"], L3["PosY"], L3["SizeX"], L3["SizeY"])
 	
-	--[[ VVV This is where the activities and their contents begin VVV
+	-- VVV This is where the activities and their contents begin VVV
 	
-	love.graphics.setColor(Cont["Red"], Cont["Green"], Cont["Blue"], Cont["Alpha"])
-	love.graphics.rectangle(Cont["Type"], Cont["PosX"], Cont["PosY"], Cont["SizeX"], Cont["SizeY"])
+	local za = cont.new("Mar 13 2025 45:22")
+	local zb = cont.new("Feb 23 1992 10:00")
+	local zc = cont.new("Apr 11 2024 2:49:00")
 	
-	-- ^^^ This is where the activities and their contents end ^^^]]
+	love.graphics.setColor(za.colors[1], za.colors[2], za.colors[3], za.colors[4])
+	love.graphics.rectangle("fill", za.position[1], za.position[2], za.size[1], za.size[2])
+	love.graphics.rectangle("fill", zb.position[1], zb.position[2], zb.size[1], zb.size[2])
+	love.graphics.rectangle("fill", zc.position[1], zc.position[2], zc.size[1], zc.size[2])
+	
+	-- ^^^ This is where the activities and their contents end ^^^
 	
 	-- VVV This is the Main Menu Background code
 	
