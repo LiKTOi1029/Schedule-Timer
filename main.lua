@@ -4,22 +4,10 @@ local cont = {}
 cont.__index = cont
 local AllInstances = {}
 
-function cont.new(InputDate)
-	instance = setmetatable({}, cont)
-	if #AllInstances > 0 then
-		instance.position = {GlobalTable["Contents"]["PosX"], GlobalTable["Contents"]["PosY"]*(#AllInstances + 10)}
-	else 
-		instance.position = {GlobalTable["Contents"]["PosX"], GlobalTable["Contents"]["PosY"]}
-	end
-	instance.size = {GlobalTable["Contents"]["SizeX"], GlobalTable["Contents"]["SizeY"]}
-	instance.contents = InputString
-	instance.date = Time.new(InputDate)
-	instance.colors = {GlobalTable["Contents"]["Red"], GlobalTable["Contents"]["Green"], GlobalTable["Contents"]["Blue"], GlobalTable["Contents"]["Alpha"]}
-	table.insert(AllInstances, instance)
-	return instance
-end
+-- , GlobalTable["Contents"]["PosY"]*(#AllInstances + 10)}
 
 function love.load()
+	
 	local Layer1Red, Layer1Green, Layer1Blue, Layer1Alpha = 0.17647058823529411764705882352941, 0.16862745098039215686274509803922, 0.25490196078431372549019607843137, 1
 	local Layer2Red, Layer2Green, Layer2Blue, Layer2Alpha = 0.13725490196078431372549019607843, 0.12941176470588235294117647058824, 0.25490196078431372549019607843137, 1
 	local Layer1PosX, Layer1PosY, Layer1SizeX = 96, 36, 888
@@ -150,6 +138,35 @@ function love.load()
 			["Alpha"] = 1,
 		},
 	}
+	function cont.new(InputDate, InputString)
+		local instance = setmetatable({}, cont)
+		instance.posX = GlobalTable["Contents"]["PosX"]
+		if #AllInstances > 0 then
+			instance.posY = GlobalTable["Contents"]["PosY"]*(#AllInstances+1)+(15*#AllInstances)
+		else 
+			instance.posY = GlobalTable["Contents"]["PosY"]
+		end
+		instance.sizeX = GlobalTable["Contents"]["SizeX"]
+		instance.sizeY = GlobalTable["Contents"]["SizeY"]
+		instance.contents = InputString
+		instance.date = Time.new(InputDate).Full
+		instance.red = GlobalTable["Contents"]["Red"]
+		instance.green = GlobalTable["Contents"]["Green"]
+		instance.blue = GlobalTable["Contents"]["Blue"]
+		instance.alpha = GlobalTable["Contents"]["Alpha"]
+		print(instance.posX .. " " .. instance.posY .. " " .. instance.sizeX .. " " .. instance.sizeY .. " " .. tostring(instance.contents))
+		print(instance.date .. " " .. instance.red .. " " .. instance.green .. " " .. instance.blue .. " " .. instance.alpha)
+		table.insert(AllInstances, instance)
+		return instance
+	end
+	
+	za = cont.new("Mar 13 2025 45:22", "Input 1")
+	zb = cont.new("Feb 23 1992 10:00", "Input 2")
+	zc = cont.new("Apr 11 2024 2:49:00", "Input 3")
+	zd = cont.new("Apr 11 2024 2:49:00", "Input 3")
+	ze = cont.new("Apr 11 2024 2:49:00", "Input 3")
+	zf = cont.new("Apr 11 2024 2:49:00", "Input 3")
+	
 end
 
 function Menu()
@@ -176,14 +193,13 @@ function Menu()
 	
 	-- VVV This is where the activities and their contents begin VVV
 	
-	local za = cont.new("Mar 13 2025 45:22")
-	local zb = cont.new("Feb 23 1992 10:00")
-	local zc = cont.new("Apr 11 2024 2:49:00")
-	
-	love.graphics.setColor(za.colors[1], za.colors[2], za.colors[3], za.colors[4])
-	love.graphics.rectangle("fill", za.position[1], za.position[2], za.size[1], za.size[2])
-	love.graphics.rectangle("fill", zb.position[1], zb.position[2], zb.size[1], zb.size[2])
-	love.graphics.rectangle("fill", zc.position[1], zc.position[2], zc.size[1], zc.size[2])
+	love.graphics.setColor(za.red, za.green, za.blue, za.alpha)
+	love.graphics.rectangle("fill", za.posX, za.posY, za.sizeX, za.sizeY)
+	love.graphics.rectangle("fill", zb.posX, zb.posY, zb.sizeX, zb.sizeY)
+	love.graphics.rectangle("fill", zc.posX, zc.posY, zc.sizeX, zc.sizeY)
+	love.graphics.rectangle("fill", zd.posX, zd.posY, zd.sizeX, zd.sizeY)
+	love.graphics.rectangle("fill", ze.posX, ze.posY, ze.sizeX, ze.sizeY)
+	love.graphics.rectangle("fill", zf.posX, zf.posY, zf.sizeX, zf.sizeY)
 	
 	-- ^^^ This is where the activities and their contents end ^^^
 	
