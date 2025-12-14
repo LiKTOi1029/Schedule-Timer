@@ -68,3 +68,5 @@ Status: Finished
 This is a .TOML log input/output system. Input a .TOML file, get its full statistics, 
 output a full .TOML file, obtain an exported .TOML file containing every activity ever 
 recorded on that particular log.
+
+Status: Not Started
