@@ -49,7 +49,7 @@ function Time.new(Input)
 	return Instance
 end
 
-local this = Time.new("Nov 24 2025 1:43:55")
-print(this.Full .. " " .. this.Date .. " " .. this.Time)
+-- local this = Time.new("Nov 24 2025 1:43:55")
+-- print(this.Full .. " " .. this.Date .. " " .. this.Time)
 
 return Time
