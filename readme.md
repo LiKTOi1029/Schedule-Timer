@@ -13,6 +13,10 @@ the docs are located if I ever make any/if any are required to begin with.
 - Reformatted frontend code
 - Redoing the colour palette
 
+### 2025/12/14
+
+- Completed contents menu section.
+
 ## Roadmap
 
 This project is intended to be finished by the first of January, 2026.
@@ -22,5 +26,44 @@ This project is intended to be finished by the first of January, 2026.
 - User Interface
 - Built-In Timer
 - System to log activities
-- System to save logged activities to text file
-- System to import and export log files
+- System to save logged activities to TOML file
+- System to import and export log files (in TOML)
+
+## Known Bugs
+
+These are all bugs which I am aware of, however have not yet fixed/I am fixing as we speak.
+
+### TimeConverter.lua`
+
+The `timeconverter.lua` script is unable to format all the values provided correctly. 
+A reformat is in order very soon to make it more efficient.
+
+Status: In Progress
+
+## Current Works
+
+This is a list of all of the things I am still working on implementing
+
+### Scrollbar
+
+This is simple concept, a scroll bar to scroll through the contents of a particualr .TOML log
+
+Status: Not Started
+
+### Interface To Build Contents
+
+An interface or button to help build brand new contents from scratch (and delete them, possibly in bulk)
+
+Status: Not Started
+
+### Contents
+
+The items contained within the application
+
+Status: finished
+
+### TOML File Reading and Exporting
+
+This is a .TOML log input/output system. Input a .TOML file, get its full statistics, 
+output a full .TOML file, obtain an exported .TOML file containing every activity ever 
+recorded on that particular log.
