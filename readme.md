@@ -16,6 +16,7 @@ the docs are located if I ever make any/if any are required to begin with.
 ### 2025/12/14
 
 - Completed contents menu section.
+- Separated files into their respective sub-files. Better organization of code.
 
 ## Roadmap
 
