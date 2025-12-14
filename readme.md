@@ -34,7 +34,7 @@ This project is intended to be finished by the first of January, 2026.
 
 These are all bugs which I am aware of, however have not yet fixed/I am fixing as we speak.
 
-### TimeConverter.lua`
+### TimeConverter.lua
 
 The `timeconverter.lua` script is unable to format all the values provided correctly. 
 A reformat is in order very soon to make it more efficient.
