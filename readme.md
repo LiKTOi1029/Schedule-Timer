@@ -61,7 +61,7 @@ Status: Not Started
 
 The items contained within the application
 
-Status: finished
+Status: Finished
 
 ### TOML File Reading and Exporting
 
