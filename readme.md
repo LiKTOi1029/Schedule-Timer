@@ -18,6 +18,11 @@ the docs are located if I ever make any/if any are required to begin with.
 - Completed contents menu section.
 - Separated files into their respective sub-files. Better organization of code.
 
+### 2025/12/21
+
+- Completed the input and date sections of the contents tabs.
+- Adding menu back into `main.lua` due to maintainability and scalability issues.
+
 ## Roadmap
 
 This project is intended to be finished by the first of January, 2026.
