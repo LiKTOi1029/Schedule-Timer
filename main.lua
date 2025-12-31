@@ -49,10 +49,13 @@ function love.load()
 		return instance
 	end
 	
-	za = cont.new("Mar 13 2025 45:22", "Input 1")
-	zb = cont.new("Feb 23 1992 10:00", "Input 2")
-	zc = cont.new("Nov 13 2003 2:49:00", "Input 3")
-	zd = cont.new("Dec 22 2004 2:49:00", "Input 4")
+	cont.new("Idk Dec 29 2025 1:46:49:34", "Journaling")
+	cont.new("Idk Dec 29 2025 54:35.51", "Speedrun Game Challenge")
+	cont.new("Idk Dec 30 2025 1:29:40.07", "Speedrun Game Challenge")
+	cont.new("Idk Dec 31 2025 48:17.75", "UNSCRIPTED by MJ DeMarco")
+	cont.new("Idk Dec 31 2025 42:52.94", "On The Fourfold Root of The Principle of Sufficient Reason by Arthur Schopenhauer")
+	cont.new("Idk Dec 31 2025 51:21.03", "Note Taking")
+	cont.new("Idk Dec 31 2025 15:13.81", "Application Dev (Shinran Bot Development)")
 	
 end	
 
