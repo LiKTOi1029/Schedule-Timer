@@ -19,7 +19,7 @@ function Time.new(Input)
 	local ParsingString = ""
 	for num1 = 1, Input:len(), 1 do
 		local Splice = Input:sub(num1,num1)
-		print(tostring(Splice))
+		-- print(tostring(Splice))
 		if ParsingString ~= "" and Splice == " " then
 			table.insert(TempTable, ParsingString)
 			ParsingString = ""
@@ -34,6 +34,9 @@ function Time.new(Input)
 	table.insert(TempTable, 1, TempTable[#TempTable])
 	table.remove(TempTable, #TempTable)
 	table.insert(TempTable, 4, " ")
+	local TemporaryTime = TempTable[1]
+	local TemporaryYear = TempTable[#TempTable]
+	TempTable[1], TempTable[#TempTable] = TemporaryYear, TemporaryTime
 	for i, v in ipairs(TempTable) do
 		if i < 4 then
 			DateTable[i] = TempTable[i]
@@ -48,8 +51,5 @@ function Time.new(Input)
 	Instance.Time = Time
 	return Instance
 end
-
--- local this = Time.new("Nov 24 2025 1:43:55")
--- print(this.Full .. " " .. this.Date .. " " .. this.Time)
 
 return Time
