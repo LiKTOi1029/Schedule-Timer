@@ -23,6 +23,10 @@ the docs are located if I ever make any/if any are required to begin with.
 - Completed the input and date sections of the contents tabs.
 - Adding menu back into `main.lua` due to maintainability and scalability issues.
 
+### 2025/12/25
+
+- Bugfixed `timeconverter.lua` now the times are being converted correctly.
+
 ## Roadmap
 
 This project is intended to be finished by the first of January, 2026.
