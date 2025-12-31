@@ -11,7 +11,7 @@ function love.load()
 	DefaultFont = love.graphics.newFont(500)
 	love.graphics.setFont(DefaultFont)
 	GlobalTable = require("GlobalTable")
-	function cont.new(InputDate, InputString)
+	function cont.new(InputDate, Book, Author)
 		local instance = setmetatable({}, cont)
 		instance.posX = GlobalTable["Contents"]["PosX"]
 		if #AllInstances > 0 then
@@ -26,7 +26,23 @@ function love.load()
 		instance.blue = GlobalTable["Contents"]["Blue"]
 		instance.alpha = GlobalTable["Contents"]["Alpha"]
 		
-		instance.contents = love.graphics.newText(DefaultFont, InputString)
+		if Author and Book:len() > 20 then
+			local Substring = Book:sub(1, 20)
+			Book = Substring .. "..."
+		elseif Book:len() > 40 then
+			local Substring = Book:sub(1, 40)
+			Book = Substring .. "..."
+		end
+		
+		if Author then
+			if Author:len() > 20 then
+				local Substring = Author:sub(1, 20)
+				Author = Substring .. "..."
+			end
+			instance.contents = love.graphics.newText(DefaultFont, Book.." By "..Author)
+		else
+			instance.contents = love.graphics.newText(DefaultFont, Book)
+		end
 		instance.contentsposX = GlobalTable["Contents"]["PosX"] + 30
 		instance.contentsposY = instance.posY + 30
 		instance.contentssizemultiplier = 0.05
@@ -52,8 +68,8 @@ function love.load()
 	cont.new("Idk Dec 29 2025 1:46:49:34", "Journaling")
 	cont.new("Idk Dec 29 2025 54:35.51", "Speedrun Game Challenge")
 	cont.new("Idk Dec 30 2025 1:29:40.07", "Speedrun Game Challenge")
-	cont.new("Idk Dec 31 2025 48:17.75", "UNSCRIPTED by MJ DeMarco")
-	cont.new("Idk Dec 31 2025 42:52.94", "On The Fourfold Root of The Principle of Sufficient Reason by Arthur Schopenhauer")
+	cont.new("Idk Dec 31 2025 48:17.75", "UNSCRIPTED", "MJ DeMarco")
+	cont.new("Idk Dec 31 2025 42:52.94", "On The Fourfold Root of The Principle of Sufficient Reason", "Arthur Schopenhauer")
 	cont.new("Idk Dec 31 2025 51:21.03", "Note Taking")
 	cont.new("Idk Dec 31 2025 15:13.81", "Application Dev (Shinran Bot Development)")
 	
