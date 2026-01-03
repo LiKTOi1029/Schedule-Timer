@@ -27,9 +27,15 @@ the docs are located if I ever make any/if any are required to begin with.
 
 - Bugfixed `timeconverter.lua` now the times are being converted correctly.
 
+### 2026/1/3
+
+- Added new scrolling mechanic. Up and down arrow keys for scrolling up and down the contents.
+
 ## Roadmap
 
-This project is intended to be finished by the first of January, 2026.
+~~This project is intended to be finished by the first of January, 2026.~~\
+\
+I have pushed this project back to between the start of Febuary and the end of January, 2026. I was hoping to have this finished by 2026, but life happens.
 
 - Only one single menu to operate from
 - Solely shortcut based, no mouse needed
