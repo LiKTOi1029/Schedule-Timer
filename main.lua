@@ -1,5 +1,5 @@
 local Time = require("timeconverter")
-
+local cScrollerValue = 0
 local cont = {}
 cont.__index = cont
 local AllInstances = {}
@@ -76,7 +76,16 @@ function love.load()
 end	
 
 function love.update(dt)
-	
+	local MaximumLowEnd = GlobalTable["Contents"]["PosY"]*5
+	local MaximumValue = -1*(AllInstances[#AllInstances].posY-MaximumLowEnd)
+	local MinimumValue = 0
+	print(MaximumValue, AllInstances[#AllInstances].posY-MaximumLowEnd)
+	if love.keyboard.isDown("down") and cScrollerValue >= MaximumValue then
+		cScrollerValue = cScrollerValue-20
+	end
+	if love.keyboard.isDown("up") and cScrollerValue < MinimumValue then
+		cScrollerValue = cScrollerValue+20
+	end
 end
 
 function LoadUI()
@@ -106,11 +115,11 @@ function LoadUI()
 
 	for i, v in pairs(AllInstances) do
 		love.graphics.setColor(v.red, v.green, v.blue, v.alpha)
-		love.graphics.rectangle("fill", v.posX, v.posY, v.sizeX, v.sizeY)
+		love.graphics.rectangle("fill", v.posX, v.posY+cScrollerValue, v.sizeX, v.sizeY)
 		love.graphics.setColor(v.contentsred, v.contentsgreen, v.contentsblue, v.contentsalpha)
-		love.graphics.draw(v.contents, v.contentsposX, v.contentsposY, 0, v.contentssizemultiplier)
+		love.graphics.draw(v.contents, v.contentsposX, v.contentsposY+cScrollerValue, 0, v.contentssizemultiplier)
 		love.graphics.setColor(v.datered, v.dategreen, v.dateblue, v.datealpha)
-		love.graphics.draw(v.date, v.dateposX, v.dateposY, 0, v.datesizemultiplier)
+		love.graphics.draw(v.date, v.dateposX, v.dateposY+cScrollerValue, 0, v.datesizemultiplier)
 	end
 
 	-- ^^^ This is where the activities and their contents end ^^^
